@@ -1,0 +1,63 @@
+import random
+anahtar = 0
+dogru_secim = 0
+yanlis_secim=0
+a = 0
+while a<1000:
+    a+=1
+    kapilar = [1,2,3]
+
+
+    araba = random.choice(kapilar)
+    secimim= random.choice(kapilar)
+
+
+    if araba == secimim:                    #buradan itibaren seçilmeyen kapıyı açtırıyorum bunun için seçilenleri sildim
+        kapilar.remove(araba)
+    else:
+        kapilar.remove(araba)
+        kapilar.remove(secimim)
+
+    acilan = random.choice(kapilar)
+    print(f"Seçtiğiniz kapı: {secimim},arabanın olduğu kapı: {araba}, acilan kapi{acilan}")
+
+    if araba == secimim:                    #burada da silinenleri geri listeye ekledim
+        kapilar.append(araba)
+    else:
+        kapilar.append(araba)
+        kapilar.append(secimim)
+        print(f"kapilar:{kapilar}")
+
+    if secimim == araba:                    #burada secimimi açılmayan kapıya çeviriyorum
+        kapilar.remove(secimim)
+        kapilar.remove(acilan)
+        secimim = kapilar[0]
+
+    else:
+        kapilar.remove(acilan)
+        kapilar.remove(secimim)
+        secimim = kapilar[0]
+
+   # print(f"kapilar:{kapilar}")
+    print(f"sonradan seçtiğiniz kapı: {secimim},arabanın olduğu kapı: {araba}, acilan kapi{acilan} \n")
+    if araba == secimim:
+     #   print("ARABAYI buldunuz!!!")
+        dogru_secim += 1
+
+    else:
+    #    print("BOŞ kapıyı açtınız!!!")
+        yanlis_secim += 1
+   # print(kapilar,araba,secimim,acilan)
+
+print(f"doğru seçimler = {dogru_secim}, yanlış seçimler = {yanlis_secim}")
+oran = dogru_secim/(dogru_secim + yanlis_secim)
+print(f"Doğru seçimi bulma olasılığınız = %{oran*100}")
+
+
+
+
+
+
+
+
+
